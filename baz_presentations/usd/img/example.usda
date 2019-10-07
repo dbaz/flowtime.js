@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    defaultPrim = "Kitchen_set"
+)
+
+def Xform "Kitchen_set" (
+    kind = "assembly"
+)
+{
+    def Xform "Arch_grp" (
+        kind = "group"
+    )
+    {
+        def "Kitchen_1" (
+            add references = @./assets/Kitchen/Kitchen.usd@
+        )
+        {
+            double3 xformOp:translate = (71.10783386230469, -43.28064727783203, -1.8192274570465088)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    over "door"(
+        active = false
+    )
+    {}
+    over "floor"(
+        references = @./assets/Kitchen/CoolNewFloor.usd@
+    )
+    {}    
+}

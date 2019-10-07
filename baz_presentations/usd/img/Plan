@@ -1,0 +1,30 @@
+Plan
+Intro Myself
+  * My Background with USD
+  * What problems I was solving
+  * Who is using USD 
+Intro to USD (Steal pixars intro)
+ Usd File anatomy
+ * Prims
+ * references
+ * variant sets
+ * payloads
+ * attributes
+ * metadata
+ * Sublayers
+ * Instancing
+ * materials (not shown in this demo)
+Show Rotor Example USD file
+ * Show what aspects of USD I covered
+
+* Talk about EditTargets show NonDestructive editing
+
+* Live python demo of USD
+
+* UsdUtils
+ * UsdCat
+ * UsdView
+ * UsdSplit
+ * UsdManager (released by sony?)
+* Advanced Aspects of USD
+ * Schemas

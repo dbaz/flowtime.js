@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US" class="ie ie6 lt-ie9">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US" class="ie ie7 lt-ie9">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US" class="ie ie8 lt-ie9">
+<![endif]-->
+<!--[if gte IE 9]>
+<html lang="en-US" class="ie ie9">
+<![endif]-->
+<!--[if !(IE)]><!-->
+<html lang="en-US" class="">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0 minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="danielbar">
+
+  <meta name="description" content="Introduction talk about Rhetoric.">
+
+  <title>Flowtime.js</title>
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../css/flowtime.css">
+  <link rel="stylesheet" href="../../css/themes/default.css">
+  <style>
+    .titles {
+      text-align: justify;
+      padding: 0.5em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .titles:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .title-prev {
+      width: 45%;
+      float: left;
+      cursor: pointer;
+    }
+
+    .title-next {
+      text-align: right;
+      width: 45%;
+      float: right;
+      cursor: pointer;
+    }
+
+  </style>
+
+</head>
+<body class="">
+
+  <div class="flowtime ft-cross">
+    <div class="ft-section">
+      <div  class="ft-page">
+        <div class="stack-center">
+          <div class="stacked-center">
+            <bold><p class="page-title">USD</p></bold>
+              <blockquote class="ft-fragment revealed">
+                "Universal Scene Description (USD) is the first publicly available software that addresses the need to robustly and scalably interchange and augment arbitrary 3D scenes that may be composed from many elemental assets." - Pixar
+              </blockquote>
+          </div>
+        </div>
+      </div>
+      <div class="ft-page">
+        <div class="stacked-center">
+          <h1>The History of USD and Me</h1>
+            <ul>
+              <li class="ft-fragment">
+                Apart of the original technical team that brought USD through the doors
+              </li>
+              <li class="ft-fragment">
+                Apart of many discussions of what are the correct ways to use USD to solve problems
+              </li>
+              <li class="ft-fragment">
+                Lead a team of six people to upgrade our Maya Modelling Pipeline, Surfacing pipeline's to USD
+              </li>
+              <li class="ft-fragment">
+                Provided support and education for Technical Artists(called Technical Directors in VFX) in USD so they could write tools based on USD and integrate them into the pipeline
+              </li>
+            </ul>
+          <h1>What I wasn't apart of with USD</h1>
+          <ul>
+            <li class="ft-fragment">
+              I wasn't apart of the leadership team that decided to adopt USD.
+            </li>
+            <li class="ft-fragment">
+              I wasn't apart of the design of the scene description. Production was.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ft-page">
+        <h1>Who supports USD</h1>
+        <ul>
+          <li>Pixar(duh!)</li>
+          <li>Disney</li>
+          <li>Apple</li>
+          <li>Dreamworks</li>
+          <li>Animal Logic</li>
+          <li>The Mill</li>
+          <li>Method Studios</li>
+          <li>Autodesk(Maya)</li>
+          <li>AfterEffects(houdini)</li>
+          <li>Google</li>
+        </ul>
+      </div>
+      <div class="ft-page">
+        <h1>What can USD do?</h1>
+        <ul>
+          <li class="ft-fragment">
+            USD is a hierarchical data structure of Prims(Primitives) which contain Properties, both Prims and Attributes can have non-time varying metadata. These all live in a what is named a Layer which is alive on disk and/or memory
+          </li>
+          <li class="ft-fragment">
+            Theses Layers can then be composed into a greater scene description
+          </li>
+          <li class="ft-fragment">
+            You can build ontop of these basic prim types with your own custom Schema types. USD Comes with a bunch of schema types such as Xform, Mesh.
+          </li>
+        </ul>
+        <li class="ft-fragment"><ul><a href="https://graphics.pixar.com/usd/docs/index.html#IntroductiontoUSD-Whatcan'tUSDdo?">Reference</a></ul></li>
+      </div>
+      <div class="ft-page">
+        <h1>What can't USD do?</h1>
+        <ul>
+          <li class="ft-fragment">Can't override Prims by identifiers, only can target edits by "hierarchical namespace" identification</li>
+          <li class="ft-fragment">
+            It isn't an evaluation engine(Animation evaluation engine, or like Houdini's execution graph), but you can make graphs that can be evaluated
+          </li>
+        </ul>
+      </div>
+      <div class="ft-page">
+        <h1>Composition of a USD scene</h1>
+        <table>
+          <tr>
+            <td class="stacked-center"><img width="800" height="400" src="img/usd-shot-sublayers.png"></td>
+            <td class="stacked-center"><img width="800" height="500" src="img/shot_layout.png"></td>
+          </tr>
+          <tr>
+            <td class="stacked-center"><img width="300" height="200" src="img/shot_composition.png"></td>
+            <td class="stacked-center"><img width="500" height="350" src="img/shot_sets.png"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="ft-page">
+        <h1> Terminology </h1>
+        <li></li><ul><a href="img/example.usda">Usd File anatomy </a><a>---</a><a href="https://graphics.pixar.com/usd/docs/USD-Glossary.html"> USD Glossary</a></ul></li>
+          <ul>
+            <li>Stage</li>
+            <ul class="ft-fragment">
+              <li>The object where all USD components live, such a Prim Prims</li>
+              <li>Provides access to the composed scene</li>
+            </ul>
+            <li>Prims</li>
+            <ul class="ft-fragment">
+              <li> Defines and Overs </li>
+              <li>Node in the USD hierarchy</li>
+              <li>Main container that encapsulates the following USD aspects</li>
+            </ul>
+            <li>Sublayers</li>
+            <ul class="ft-fragment">
+              <li> Pulls in scene description from a file on disk </li>
+              <li> The strongest of the composition-arcs </li>
+            </ul>
+          </ul>
+      </div>
+      <div class="ft-page">
+        <h1>More Anatomy of a USD file</h1>
+        <ul>
+          <li>References</li>
+          <ul class="ft-fragment">
+            <li>Pulls in hierarchies from the specified reference</li>
+            <li>Main container that encapsulates the following USD aspects</li>
+            <li>Able to have external references and internal prim references</li>
+          </ul>
+          <li>Payloads</li>
+          <ul class="ft-fragment">
+            <li>Exactly like the reference, except it Lazy loads content</li>
+            <li>You can't pick and choose which payload is loaded, if you choose to load payloads you load all of them</li>
+          </ul>
+          <li>Variant Sets</li>
+          <ul class="ft-fragment">
+            <li>Allows you to dynamic swap poritions of scene description</li>
+            <li>Can only effect scene description below this point</li>
+          </ul>
+          <li>Attributes and Metadata</li>
+          <li>Instancing</li>
+          <ul class="ft-fragment">
+            <li>Is Implicit Instancing, where the master isn't explicitly defined but determined via a reference</li>
+          </ul>
+        </ul>
+      </div>            
+      <div class="ft-page">
+        <h1>USD Workflows</h1>
+        <h3> USD Allows you to: </h3>
+        <ul>
+          <li class="ft-fragment">Where you want a common interchange format between external people</li>
+          <li class="ft-fragment"> Have different departments of people contributing to a piece of the scene(I don't mean in a realtime collaborative way)</li>
+          <li class="ft-fragment"> Workflows where you want a department to non-destructivly affect the whole scene or part of it</li>
+          <li class="ft-fragment"> Where you want to move away from any single DDC who owns the scene, but instead have many apps modifying a central model that is your scene</li>
+        </ul>
+
+      </div>
+      <div class="ft-page">
+        <h1>Toolbox of a USD user</h1>
+          <ul>
+            <li> UsdCat
+              <ul class="ft-fragment">
+                <li>Prints out the contents of a USD file to stdout</li>
+                <li>Allows you to convert USD files between USD extensions or other extensions</li>
+                <code> >usdcat lexus_ux.usda</code>
+              </ul> 
+            </li>
+            <li> UsdView
+              <ul class="ft-fragment">
+                <li>Goto tool to test composition of your scene, test out variant switches and change values</li>
+                <code> >usdview lexus_ux.usda</code>
+              </ul>
+            </li>
+            <li><a href="http://www.usdmanager.org/">UsdManager</a>
+              <ul class="ft-fragment">
+                <li>Created by DreamWorks</li>
+                <li>Text editor based app that allows you to introspect compositon-arcs and follow them</li>
+              </ul>
+            </li>
+            <li> AL_USDMaya
+              <ul class="ft-fragment">
+                <li>Create by Animal Logic</li>
+                <li>It's goal is round trip USD hierarchies in-and-out of Maya</li>
+              </ul>
+            </li>
+         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="titles">
+    <div class="title-prev"></div>
+    <div class="title-next"></div>
+  </div>
+
+  <script src="../../js/brav1toolbox.js"></script>
+  <script src="../../js/flowtime.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1228618-10']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackEvent', 'Flowtime', 'Landing', document.title]);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    // Configuration API test
+    Flowtime.showProgress(true);
+
+    var prevTitle = document.querySelector(".title-prev");
+    var nextTitle = document.querySelector(".title-next");
+
+    prevTitle.addEventListener("click", Flowtime.prev, false);
+    nextTitle.addEventListener("click", Flowtime.next, false);
+
+    Flowtime.addEventListener("flowtimenavigation", onNavigation, false);
+
+    function onNavigation(e)
+    {
+      var prevPage = Flowtime.getPrevPage();
+      var nextPage = Flowtime.getNextPage();
+      if (prevPage === null) {
+        prevTitle.innerHTML = "";
+      } else {
+        prevTitle.innerHTML = "&lt; " + prevPage.getAttribute("data-title");
+      }
+      if (nextPage === null) {
+        nextTitle.innerHTML = "";
+      } else {
+        nextTitle.innerHTML = nextPage.getAttribute("data-title") + " &gt;";
+      }
+    }
+
+    // starts the application with configuration options
+    Flowtime.start();
+  </script>
+
+</body>
+</html>
