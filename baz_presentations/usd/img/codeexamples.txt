@@ -1,0 +1,2 @@
+a= p.CreateAttribute("fooattr", Sdf.ValueTyperNames.String)
+a.Set("barvalue")
