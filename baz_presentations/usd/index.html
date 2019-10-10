@@ -67,7 +67,7 @@
       <div  class="ft-page">
         <div class="stack-center">
           <div class="stacked-center">
-            <bold><p class="page-title">USD</p></bold>
+            <bold><h1 class="page-title">USD</h1></bold>
               <blockquote class="ft-fragment revealed">
                 "Universal Scene Description (USD) is the first publicly available software that addresses the need to robustly and scalably interchange and augment arbitrary 3D scenes that may be composed from many elemental assets." - Pixar
               </blockquote>
@@ -79,25 +79,28 @@
           <h1>The History of USD and Me</h1>
             <ul>
               <li class="ft-fragment">
+                It all started in VFX @ Animal Logic
+              </li>
+              <li class="ft-fragment">
                 Apart of the original technical team that brought USD through the doors
               </li>
               <li class="ft-fragment">
-                Apart of many discussions of what are the correct ways to use USD to solve problems
+                Apart of many discussions of how we were going to use USD to solve existing problems on the floor and what other opportunities it opened us up to
               </li>
               <li class="ft-fragment">
-                Lead a team of six people to upgrade our Maya Modelling Pipeline, Surfacing pipeline's to USD
+                Led a team of six people to upgrade our Maya Modelling Pipeline, Surfacing pipeline's model to USD, along with upgrading parts of our VFX breakdown into USD
               </li>
               <li class="ft-fragment">
-                Provided support and education for Technical Artists(called Technical Directors in VFX) in USD so they could write tools based on USD and integrate them into the pipeline
+                Provided support and education for Directors in USD so they could write tools based on USD and integrate them into the pipeline
               </li>
             </ul>
           <h1>What I wasn't apart of with USD</h1>
           <ul>
             <li class="ft-fragment">
-              I wasn't apart of the leadership team that decided to adopt USD.
+              I wasn't apart of the leadership team that decided to adopt USD. Management were.
             </li>
             <li class="ft-fragment">
-              I wasn't apart of the design of the scene description. Production was.
+              I wasn't apart of the design of the scene description. Production were.
             </li>
           </ul>
         </div>
@@ -121,13 +124,22 @@
         <h1>What can USD do?</h1>
         <ul>
           <li class="ft-fragment">
-            USD is a hierarchical data structure of Prims(Primitives) which contain Properties, both Prims and Attributes can have non-time varying metadata. These all live in a what is named a Layer which is alive on disk and/or memory
+            It is photoshop for scene creation. Where you can put edits into Layers then compose the Layers to make a final image, or hierarchy in USD's case 
           </li>
           <li class="ft-fragment">
-            Theses Layers can then be composed into a greater scene description
+            Layers in USD are files and can then be `Composed` together into a greater scene description
           </li>
           <li class="ft-fragment">
-            You can build ontop of these basic prim types with your own custom Schema types. USD Comes with a bunch of schema types such as Xform, Mesh.
+              Layers are made up of Prims who makeup a "hierachical namespace" or unique path to an object in your world
+          </li>
+          <li class="ft-fragment">
+              You use these hierarchical namespace paths to `Override` Prims in your scene. This allowes you to move trees and change the look of cars all by changing Attributes and Metadata on these Prims. 
+          </li>
+          <li class="ft-fragment">
+              You can non-destructivly turn ON or OFF Prims and even Layers to modify your World.
+          </li>
+          <li class="ft-fragment">
+              Do we need an EXAMPLE?
           </li>
         </ul>
         <li class="ft-fragment"><ul><a href="https://graphics.pixar.com/usd/docs/index.html#IntroductiontoUSD-Whatcan'tUSDdo?">Reference</a></ul></li>
@@ -135,7 +147,7 @@
       <div class="ft-page">
         <h1>What can't USD do?</h1>
         <ul>
-          <li class="ft-fragment">Can't override Prims by identifiers, only can target edits by "hierarchical namespace" identification</li>
+          <li class="ft-fragment">Can't override Prims by identifiers or some UniqueID, only can target edits by this "hierarchical namespace"</li>
           <li class="ft-fragment">
             It isn't an evaluation engine(Animation evaluation engine, or like Houdini's execution graph), but you can make graphs that can be evaluated
           </li>
@@ -160,48 +172,67 @@
           <ul>
             <li>Stage</li>
             <ul class="ft-fragment">
-              <li>The object where all USD components live, such a Prim Prims</li>
+              <li>Composes Layers together</li>
               <li>Provides access to the composed scene</li>
+            </ul>
+            <li>Layers</li>
+            <ul class="ft-fragment">
+              <li>Contains Prims(opinions)</li>
+              <li>Call pull in and compose other Layers via `SubLayers`</li>
             </ul>
             <li>Prims</li>
             <ul class="ft-fragment">
-              <li> Defines and Overs </li>
-              <li>Node in the USD hierarchy</li>
-              <li>Main container that encapsulates the following USD aspects</li>
-            </ul>
-            <li>Sublayers</li>
-            <ul class="ft-fragment">
-              <li> Pulls in scene description from a file on disk </li>
-              <li> The strongest of the composition-arcs </li>
+              <li>Are the nodes in a USD hierarchy</li>
+              <li>Can be specified as a Define(Def), Over or Class </li>
+              <li>Can have a Type and a Kind(i.e. Xform, Mesh)</li>
+              <li>Are the object with brings in the bulk of content into your scene</li>
             </ul>
           </ul>
       </div>
       <div class="ft-page">
         <h1>More Anatomy of a USD file</h1>
+        <h2> Intro to the Composition-Arcs and LiVRPs <h2>
         <ul>
+          <li>Sublayers</li>
+          <ul>
+            <li class="ft-fragment"> Is Metadata of a Layer, not list editable </li>
+            <li class="ft-fragment"> Pulls in scene description from a file on disk</li>
+            <li class="ft-fragment"> The strongest of the Composition-Arcs </li>
+          </ul>
           <li>References</li>
-          <ul class="ft-fragment">
-            <li>Pulls in hierarchies from the specified reference</li>
-            <li>Main container that encapsulates the following USD aspects</li>
-            <li>Able to have external references and internal prim references</li>
+          <ul>
+            <li class="ft-fragment">It's a list editable Metadata that lives on a Prim</li>
+            <li class="ft-fragment">Pulls in hierarchies from the specified file</li>
+            <li class="ft-fragment">Able to have external references and internal prim references</li>
           </ul>
           <li>Payloads</li>
-          <ul class="ft-fragment">
-            <li>Exactly like the reference, except it Lazy loads content</li>
-            <li>You can't pick and choose which payload is loaded, if you choose to load payloads you load all of them</li>
-          </ul>
-          <li>Variant Sets</li>
-          <ul class="ft-fragment">
-            <li>Allows you to dynamic swap poritions of scene description</li>
-            <li>Can only effect scene description below this point</li>
-          </ul>
-          <li>Attributes and Metadata</li>
-          <li>Instancing</li>
-          <ul class="ft-fragment">
-            <li>Is Implicit Instancing, where the master isn't explicitly defined but determined via a reference</li>
+          <ul>
+            <li class="ft-fragment">Exactly like the reference, except it Lazy loads content</li>
+            <li class="ft-fragment">You can't pick and choose which payload is loaded, if you choose to load payloads you load all of them</li>
           </ul>
         </ul>
-      </div>            
+      </div> 
+      <div class="ft-page">
+        <h1>Even More Anatomy of a USD file</h1>
+        <ul>
+            <li>Properties, Attributes and Metadata</li>
+            <ul>
+              <li class="ft-fragment">Attributes and Metadata are all Properties</li>
+              <li class="ft-fragment">Metadata is more lightweight than Attributes since they arn't affected by Time</li>
+              <li class="ft-fragment">There is all the standard Attribute types</li>
+              <li class="ft-fragment">More info: USDRelationship is powerful Property which can reference any part of the scene description(Intermediate)</li>
+            </ul>
+            <li>Variant Sets</li>
+            <ul>
+              <li class="ft-fragment">Allows you to dynamic swap poritions of your scene</li>
+              <li class="ft-fragment">Can only effect scene description below the point where the VariantSet lives</li>
+            </ul>
+            <li>Instancing</li>
+            <ul>
+                <li class="ft-fragment">Is Implicit Instancing, where the master isn't explicitly defined but determined by logic within USD that relies on a Reference</li>
+            </ul>
+        </ul>
+      </div>
       <div class="ft-page">
         <h1>USD Workflows</h1>
         <h3> USD Allows you to: </h3>
@@ -242,6 +273,17 @@
               </ul>
             </li>
          </ul>
+      </div>
+      <div  class="ft-page">
+        <div class="stack-center">
+            <div class="stacked-center">
+                <bold><h1 class="page-title">QUESTIONS?</h1></bold>
+            </div>
+        </div>
+      </div>
+      <div  class="ft-page">
+          <h3>rez env usd</h3>
+          <h3>usdview Y:/rotor_projects/2023_RAV4_RT_Concept/drop/forBaz/RCF/maya_to_hou.usdc</h3>
       </div>
     </div>
   </div>

@@ -1,0 +1,57 @@
+usd-shot-sublayers-example.usda
+#usda 1.0
+(
+ subLayers = [
+ 	@Shot_Layout.usd@
+ 	@Show_Sets.usd@
+ ]
+)
+
+
+####################### Shot_Layout
+
+#usda 1.0
+()
+
+def Xform "World"(
+	kind = "assembly"
+)
+{
+	def Xform "Anim"()
+	{
+		def Xform "Chars"(
+			kind = "group"
+		)
+		{
+			double3 xformOp:translate = (71.10783386230469, -43.28064727783203, -1.8192274570465088)
+			uniform token[] xformOpOrder = ["xformOp:scale"]
+
+			def Character "Buzz"( 
+				kind = "Character"
+			)
+			{
+					double3 xformOp:translate = (71.10783386230469, -43.28064727783203, -1.8192274570465088)
+					uniform token[] xformOpOrder = ["xformOp:translate"]
+			}
+		}
+	}
+}
+
+####################### Shot_Sets
+#usda 1.0
+()
+
+over "World"()
+{
+	def Xform "Sets"(
+		kind = "assembly"
+	)
+	{
+		def Xform "SunnySide_set"(
+			kind = "assembly"
+		)
+		{
+			reference = @awesome_cool_set.usda@
+		}
+	}
+}
