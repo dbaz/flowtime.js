@@ -85,13 +85,13 @@
                 Apart of the original technical team that brought USD through the doors
               </li>
               <li class="ft-fragment">
-                Apart of many discussions of how we were going to use USD to solve exising problems on the floor and what other opportunities it opened us up to
+                Apart of many discussions of how we were going to use USD to solve existing problems on the floor and what other opportunities it opened us up to
               </li>
               <li class="ft-fragment">
-                Lead a team of six people to upgrade our Maya Modelling Pipeline, Surfacing pipeline's model to USD, along with upgrading parts of our breakdown into USD
+                Led a team of six people to upgrade our Maya Modelling Pipeline, Surfacing pipeline's model to USD, along with upgrading parts of our VFX breakdown into USD
               </li>
               <li class="ft-fragment">
-                Provided support and education for Technical Artists(called Technical Directors in VFX) in USD so they could write tools based on USD and integrate them into the pipeline
+                Provided support and education for Directors in USD so they could write tools based on USD and integrate them into the pipeline
               </li>
             </ul>
           <h1>What I wasn't apart of with USD</h1>
@@ -124,22 +124,19 @@
         <h1>What can USD do?</h1>
         <ul>
           <li class="ft-fragment">
-            It is photoshop for scene creation. Where you can put edits into layers, compose the layers, turn off layers or mask our edits in a layer.
+            It is photoshop for scene creation. Where you can put edits into Layers then compose the Layers to make a final image, or hierarchy in USD's case 
           </li>
           <li class="ft-fragment">
-            USD is a hierarchical a hierarchy of nodes(called Prims) which live in a Layer
+            Layers in USD are files and can then be `Composed` together into a greater scene description
           </li>
           <li class="ft-fragment">
-            Theses Layers are files or can then be `Composed` into a greater scene description
+              Layers are made up of Prims who makeup a "hierachical namespace" or unique path to an object in your world
           </li>
           <li class="ft-fragment">
-              These Prims makeup a hierachical namespace or unique path to a part or aspect of your world
+              You use these hierarchical namespace paths to `Override` Prims in your scene. This allowes you to move trees and change the look of cars all by changing Attributes and Metadata on these Prims. 
           </li>
           <li class="ft-fragment">
-              You use these hierarchical namespace paths to `Override` Prims in your scene. This allowes you to move trees, change the look of cars all by changing Attributes and Metadata on these Prims. 
-          </li>
-          <li class="ft-fragment">
-              You can easily turn and and off `Overrides`, and even Layers to affect composition.
+              You can non-destructivly turn ON or OFF Prims and even Layers to modify your World.
           </li>
           <li class="ft-fragment">
               Do we need an EXAMPLE?
@@ -194,18 +191,18 @@
       </div>
       <div class="ft-page">
         <h1>More Anatomy of a USD file</h1>
-        <h2> It's all about the composition and LiVRPs <h2>
+        <h2> Intro to the Composition-Arcs and LiVRPs <h2>
         <ul>
           <li>Sublayers</li>
           <ul>
-            <li class="ft-fragment"> Is an Attribute of a Layer </li>
-            <li class="ft-fragment"> Pulls in scene description from a file on disk(or memory, but not recommended) </li>
-            <li class="ft-fragment"> The strongest of the composition-arcs </li>
+            <li class="ft-fragment"> Is Metadata of a Layer, not list editable </li>
+            <li class="ft-fragment"> Pulls in scene description from a file on disk</li>
+            <li class="ft-fragment"> The strongest of the Composition-Arcs </li>
           </ul>
           <li>References</li>
           <ul>
-            <li class="ft-fragment">Pulls in hierarchies from the specified reference</li>
-            <li class="ft-fragment">Main container that encapsulates the following USD aspects</li>
+            <li class="ft-fragment">It's a list editable Metadata that lives on a Prim</li>
+            <li class="ft-fragment">Pulls in hierarchies from the specified file</li>
             <li class="ft-fragment">Able to have external references and internal prim references</li>
           </ul>
           <li>Payloads</li>
@@ -283,6 +280,10 @@
                 <bold><h1 class="page-title">QUESTIONS?</h1></bold>
             </div>
         </div>
+      </div>
+      <div  class="ft-page">
+          <h3>rez env usd</h3>
+          <h3>usdview Y:/rotor_projects/2023_RAV4_RT_Concept/drop/forBaz/RCF/maya_to_hou.usdc</h3>
       </div>
     </div>
   </div>
